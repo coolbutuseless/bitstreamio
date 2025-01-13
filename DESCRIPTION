@@ -1,0 +1,21 @@
+Package: bitstreamio
+Type: Package
+Title: Read and Write Bits from Files, Connections and Raw Vectors
+Version: 0.1.0
+Authors@R: c(
+    person("Mike", "Cheng", role = c("aut", "cre", 'cph'), email = "mikefc@coolbutuseless.com")
+    )
+Maintainer: Mike Cheng <mikefc@coolbutuseless.com>
+URL: https://github.com/coolbutuseless/bitstreamio
+BugReports: https://github.com/coolbutuseless/bitstreamio/issues
+Description: Bit-level reading and writing are necessary when dealing with 
+  many file formats e.g. compressed data and binary files.  Currently, R 
+  connections are manipulated at the byte level.  This package wraps existing
+  connections and raw vectors so that it is possible to read bits, bit sequences,
+  unaligned bytes and low-bit representations of integers.
+License: MIT + file LICENSE
+Encoding: UTF-8
+RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
