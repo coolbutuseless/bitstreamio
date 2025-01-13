@@ -1,45 +1,30 @@
 ---
-output: github_document
+title: "Overview"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Overview}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = FALSE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
+  collapse = TRUE,
+  comment = "#>"
 )
-
-library(bitstreamio)
-
-if (FALSE) {
-  # Check for functions which do not have an @examples block for roxygen
-  system("grep -c examples man/*Rd", intern = TRUE) |> 
-    grep(":0$", x = _, value = TRUE)
-}
-
-
-if (FALSE) {
-  covr::report()
-}
-
 ```
 
-# bitstreamio
+```{r setup}
+library(bitstreamio)
+```
 
-<!-- badges: start -->
-![](https://img.shields.io/badge/cool-useless-green.svg)
-[![CRAN](https://www.r-pkg.org/badges/version/bitstreamio)](https://CRAN.R-project.org/package=bitstreamio)
-[![R-CMD-check](https://github.com/coolbutuseless/bitstreamio/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/coolbutuseless/bitstreamio-dev/actions/workflows/R-CMD-check.yaml)
-<!-- badges: end -->
 
 `bitstreamio` is a package for reading bits from a connection or raw vector.
 
 This package has no requirement that reads/write operations be *byte aligned*.
-This is useful for input/output with packed binary file formats e.g. h264-compressed
-video, mp3 audio etc.
+
+Reading/writing bits and unaligned bytes is useful for input/output with packed binary 
+file formats e.g. h264-compressed video, mp3 audio etc.
 
 In addition to reading individual bits, this package also provides for:
 
@@ -62,30 +47,6 @@ In addition to reading individual bits, this package also provides for:
     * `bs_open()`, `bs_close()`
     * `bs_is_aligned()`, `bs_align()`
     * `bs_advance()`, `bs_peek()`
-
-
-## Installation
-
-<!-- This package can be installed from CRAN -->
-
-<!-- ``` r -->
-<!-- install.packages('bitstreamio') -->
-<!-- ``` -->
-
-You can install the latest development version from
-[GitHub](https://github.com/coolbutuseless/bitstreamio) with:
-
-``` r
-# install.package('remotes')
-remotes::install_github('coolbutuseless/bitstreamio')
-```
-
-<!-- Pre-built source/binary versions can also be installed from -->
-<!-- [R-universe](https://r-universe.dev) -->
-
-<!-- ``` r -->
-<!-- install.packages('bitstreamio', repos = c('https://coolbutuseless.r-universe.dev', 'https://cloud.r-project.org')) -->
-<!-- ``` -->
 
 ## Read/Write with a raw vector
 
@@ -176,6 +137,7 @@ bs_close(bs)
 
 
 
+
 ## Read/write integers with Exponential-Golomb coding
 
 [Exponential-Golomb coding](https://en.wikipedia.org/wiki/Exponential-Golomb_coding) is
@@ -220,15 +182,3 @@ bs <- bs_open(raw_vec, mode = 'r')
 bs_read_uint_exp_golomb(bs, 10)
 bs_close(bs)
 ```
-
-
-
-
-
-
-
-
-## Related Software
-
-* [ctypesio](https://cran.r-project.org/package=ctypesio) - for reading/writing
-  standard C types with connections e.g. `uint16`, `float`, `double` etc.

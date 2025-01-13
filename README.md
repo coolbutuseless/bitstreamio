@@ -195,6 +195,95 @@ bs_read_uint(bs, nbits = 4, n = 6)
 bs_close(bs)
 ```
 
+## Read/write integers with Exponential-Golomb coding
+
+[Exponential-Golomb
+coding](https://en.wikipedia.org/wiki/Exponential-Golomb_coding) is a
+way of encoding integers to bit sequences. These bit sequences are often
+smaller than any standard integer type, and are often used to save space
+when packing data into a stream when the size of the integer is not
+known ahead of time.
+
+``` r
+# Converstion of unsigned integers to Exponential-Golomb coded bit sequences
+uint_to_exp_golomb_bits(0)
+```
+
+    #> [1] TRUE
+
+``` r
+uint_to_exp_golomb_bits(1)
+```
+
+    #> [1] FALSE  TRUE FALSE
+
+``` r
+uint_to_exp_golomb_bits(2)
+```
+
+    #> [1] FALSE  TRUE  TRUE
+
+``` r
+uint_to_exp_golomb_bits(3)
+```
+
+    #> [1] FALSE FALSE  TRUE FALSE FALSE
+
+``` r
+# Converstion of signed integers to Exponential-Golomb coded bit sequences
+sint_to_exp_golomb_bits(0)
+```
+
+    #> [1] TRUE
+
+``` r
+sint_to_exp_golomb_bits(-1)
+```
+
+    #> [1] FALSE  TRUE  TRUE
+
+``` r
+sint_to_exp_golomb_bits(-2)
+```
+
+    #> [1] FALSE FALSE  TRUE FALSE  TRUE
+
+``` r
+sint_to_exp_golomb_bits(3)
+```
+
+    #> [1] FALSE FALSE  TRUE  TRUE FALSE
+
+``` r
+library(bitstreamio)
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Write bits to a raw vector
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bs <- bs_open(raw(), "w")
+bs_write_uint_exp_golomb(bs,  0:9) 
+raw_vec <- bs_close(bs)
+
+# 10 integers encoded into 6 bytes
+raw_vec
+```
+
+    #> [1] a6 42 98 e2 04 8a
+
+``` r
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# Read bits back from raw vector
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+bs <- bs_open(raw_vec, mode = 'r')
+bs_read_uint_exp_golomb(bs, 10)
+```
+
+    #>  [1] 0 1 2 3 4 5 6 7 8 9
+
+``` r
+bs_close(bs)
+```
+
 ## Related Software
 
 - [ctypesio](https://cran.r-project.org/package=ctypesio) - for
