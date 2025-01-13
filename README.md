@@ -7,7 +7,7 @@
 
 ![](https://img.shields.io/badge/cool-useless-green.svg)
 [![CRAN](https://www.r-pkg.org/badges/version/bitstreamio)](https://CRAN.R-project.org/package=bitstreamio)
-[![R-CMD-check](https://github.com/coolbutuseless/bitstreamio-dev/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/coolbutuseless/bitstreamio-dev/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/coolbutuseless/bitstreamio/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/coolbutuseless/bitstreamio-dev/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `bitstreamio` is a package for reading bits from a connection or raw
@@ -19,11 +19,11 @@ formats e.g. h264-compressed video, mp3 audio etc.
 
 In addition to reading individual bits, this package also provides for:
 
-- Reading/writing raw vectors
+- Reading/writing unaligned bytes as raw vectors
 - Reading/writing unsigned integers (i.e. non-negative integers) at bit
   depths from 1 to 31
-- Read/write [Exponential-Golomb coded
-  integers](https://en.wikipedia.org/wiki/Exponential-Golomb_coding)
+- Read/write signed/unsigned integers with [Exponential-Golomb
+  coding](https://en.wikipedia.org/wiki/Exponential-Golomb_coding)
 
 ## What’s in the box
 
