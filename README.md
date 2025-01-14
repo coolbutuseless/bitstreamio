@@ -41,13 +41,11 @@ In addition to reading individual bits, this package also provides for:
 
 ## Installation
 
-<!-- This package can be installed from CRAN -->
+This package can be installed from CRAN
 
-<!-- ``` r -->
-
-<!-- install.packages('bitstreamio') -->
-
-<!-- ``` -->
+``` r
+install.packages('bitstreamio')
+```
 
 You can install the latest development version from
 [GitHub](https://github.com/coolbutuseless/bitstreamio) with:
@@ -57,15 +55,12 @@ You can install the latest development version from
 remotes::install_github('coolbutuseless/bitstreamio')
 ```
 
-<!-- Pre-built source/binary versions can also be installed from -->
+Pre-built source/binary versions can also be installed from
+[R-universe](https://r-universe.dev)
 
-<!-- [R-universe](https://r-universe.dev) -->
-
-<!-- ``` r -->
-
-<!-- install.packages('bitstreamio', repos = c('https://coolbutuseless.r-universe.dev', 'https://cloud.r-project.org')) -->
-
-<!-- ``` -->
+``` r
+install.packages('bitstreamio', repos = c('https://coolbutuseless.r-universe.dev', 'https://cloud.r-project.org'))
+```
 
 ## Read/Write with a raw vector
 
